@@ -1,2 +1,4 @@
 %Test 123 2
-mûködik bameg
+%mûködik bameg
+a = 'Hello World';
+disp(a)
