@@ -14,11 +14,15 @@ V = [v1,v2]
 W = [v3]
 U = [V,W]
 if rank(U)~=3
-    error('restart m8, the rank is not quite right sry m8')
+    error('restart m8, the rank is not quite right')
 else
     P= [V,zeros(3,1)]*inv(U)
+    %%% Checking
+    E = P*randi(3,3,1)
+    if (rank([v1,v2,E])==2)
+        disp('Everything seems about right')
+    else
+        error('Something wrong m8')
+    end
+    
 end
-%%% Checking
-E = P*randi(3,3,1)
-
-rank([v1,v2,E])
