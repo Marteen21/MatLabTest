@@ -18,3 +18,7 @@ if rank(U)~=3
 else
     P= [V,zeros(3,1)]*inv(U)
 end
+%%% Checking
+E = P*randi(3,3,1)
+
+rank([v1,v2,E])
