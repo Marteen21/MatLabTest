@@ -8,6 +8,10 @@ imgname = 'billy_grey'; %original picture
 type = '.bmp';  %picture ext(i.e .png, .bmp)
 
 %% Kép beolvasása
+% 
+% 
+% <<billy_grey.bmp>>
+% 
 
 A = double(imread(strcat(imgname,type)));
 [U,S,V] = svd(A);
@@ -19,8 +23,12 @@ C = U*SR2*V';
 
 %%
 %Kép kiírása
+% 
+% <<billy_grey_10.bmp>> <<billy_grey_R2.bmp>>
+% 
 imwrite(uint8(B),strcat(imgname,strcat('_10',type)));
 imwrite(uint8(C),strcat(imgname,strcat('_R2',type)));
+
 %%
 %BFdistance: az elsõ kép négyzetösszegének gyöke (ez fogja mérni a két
 %mátrix távolságát Frobenius-normában)
@@ -36,7 +44,7 @@ for i = 11:r
     end
 end
 BFdistance = sqrt(BFdistance)
-BFmaxs
+BFmax
 %%
 %CFdistance: a másodikkép négyzetösszegének gyöke (ez fogja mérni a két
 %mátrix távolságát Frobenius-normában)
