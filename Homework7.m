@@ -7,6 +7,8 @@ close all
 imgname = 'billy_grey'; %original picture 
 type = '.bmp';  %picture ext(i.e .png, .bmp)
 
+%% Kép beolvasása
+
 A = double(imread(strcat(imgname,type)));
 [U,S,V] = svd(A);
 r = rank(A)
@@ -14,9 +16,17 @@ S10 = [[S(1:10,1:10),zeros(10,r-10)];zeros(r-10,r)];
 SR2 = [[S(1:r/2,1:r/2),zeros(r/2,r-r/2)];zeros(r-r/2,r)];
 B = U*S10*V';
 C = U*SR2*V';
+
+%%
+%Kép kiírása
 imwrite(uint8(B),strcat(imgname,strcat('_10',type)));
 imwrite(uint8(C),strcat(imgname,strcat('_R2',type)));
-
+%%
+%BFdistance: az elsõ kép négyzetösszegének gyöke (ez fogja mérni a két
+%mátrix távolságát Frobenius-normában)
+%
+%BFmax az elsõ kép legnagyobb elhagyott szinguláris értéke (ez fogja mérni
+%a két mátrix távolságát 2-normában)
 BFdistance = 0;
 BFmax = S(11,11);
 for i = 11:r
@@ -25,14 +35,21 @@ for i = 11:r
         BFmax = S(i,i);
     end
 end
-BFdistance = sqrt(BFdistance);
-
+BFdistance = sqrt(BFdistance)
+BFmaxs
+%%
+%CFdistance: a másodikkép négyzetösszegének gyöke (ez fogja mérni a két
+%mátrix távolságát Frobenius-normában)
+%
+%CFmax: a második kép legnagyobb elhagyott szinguláris értéke (ez fogja
+%mérni a két mátrix távolságát 2-normában)
 CFdistance = 0;
-CFmax = S(r/2+1,r/2+1)
+CFmax = S(r/2+1,r/2+1);
 for j = r/2+1:r
     CFdistance =  CFdistance + S(j,j);
     if(S(j,j)>CFmax)
-        CFmax = S(j,j)
+        CFmax = S(j,j);
     end
 end
-CFdistance = sqrt(CFdistance);
+CFdistance = sqrt(CFdistance)
+CFmax
