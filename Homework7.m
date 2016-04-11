@@ -38,7 +38,7 @@ imwrite(uint8(C),strcat(imgname,strcat('_R2',type)));
 BFdistance = 0;
 BFmax = S(11,11);
 for i = 11:r
-    BFdistance =  BFdistance + S(i,i);
+    BFdistance =  BFdistance + S(i,i).^2;
     if(S(i,i)>BFmax)
         BFmax = S(i,i);
     end
@@ -54,7 +54,7 @@ BFmax
 CFdistance = 0;
 CFmax = S(r/2+1,r/2+1);
 for j = r/2+1:r
-    CFdistance =  CFdistance + S(j,j);
+    CFdistance =  CFdistance + S(j,j).^2;
     if(S(j,j)>CFmax)
         CFmax = S(j,j);
     end
