@@ -5,12 +5,12 @@
 clear all
 close all
 imgname = 'billy_grey'; %original picture 
-type = '.bmp';  %picture ext(i.e .png, .bmp)
+type = '.png';  %picture ext(i.e .png, .bmp)
 
 %% Kép beolvasása
 % 
 % 
-% <<billy_grey.bmp>>
+% 
 % 
 
 A = double(imread(strcat(imgname,type)));
@@ -24,7 +24,7 @@ C = U*SR2*V';
 %%
 %Kép kiírása
 % 
-% <<billy_grey_10.bmp>> <<billy_grey_R2.bmp>>
+%   
 % 
 imwrite(uint8(B),strcat(imgname,strcat('_10',type)));
 imwrite(uint8(C),strcat(imgname,strcat('_R2',type)));
